@@ -25,4 +25,8 @@ public class SelectionSorter implements Sorter{
         return array;
     }
 
+    public String getName(){
+        return "Selection Sorter";
+    }
+
 }

@@ -13,7 +13,7 @@ public class Starter {
         try {
             int start = menu.chooseMethod();
             if (start == 1) {
-                runAlgorithm();
+                runSortingALgorithm();
             } else if (start == 2) {
                 runPerformanceTests();
             } else {
@@ -28,7 +28,7 @@ public class Starter {
 
     }
 
-    public static void runAlgorithm() {
+    private static void runSortingALgorithm() {
         //create menu, factory and randomiser
         Menu menu = new Menu();
         SortManager sortManagerFactory = new SortManager();
@@ -56,9 +56,16 @@ public class Starter {
         //print results
         menu.printPerformanceTest(timeTaken);
         menu.printSortingResults(sortedArray);
+
+        int restart = menu.restartProgram();
+        if (restart == 1) {
+            start();
+        } else {
+            System.out.println("Thanks for trying this program!");
+        }
     }
 
-    public static void runPerformanceTests() {
+    private static void runPerformanceTests() {
         //create menu, factor and randomiser
         Menu menu = new Menu();
         SortManager sortManagerFactory = new SortManager();
@@ -79,8 +86,18 @@ public class Starter {
             int[] sortedArray = chosenSorter.sortArray(array);
             long end = System.nanoTime();
             long timeTaken = ((end - start));
+            menu.printPerformanceTests(timeTaken, i);
+        }
+        int restart = menu.restartProgram();
+        try {
+            if (restart == 1) {
+                start();
+            } else {
+                System.out.println("Thanks for trying this program!");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Input not accepted, please input 1 or 2");
 
-            menu.printPerformanceTest(timeTaken);
         }
     }
 }

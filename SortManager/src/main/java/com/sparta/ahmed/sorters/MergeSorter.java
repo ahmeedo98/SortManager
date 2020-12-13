@@ -48,4 +48,8 @@ public class MergeSorter implements Sorter {
         mergeSorter(arrayToSort);
         return arrayToSort;
     }
+
+    public String getName(){
+        return "Merge Sorter";
+    }
 }

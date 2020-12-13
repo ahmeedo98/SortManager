@@ -44,5 +44,9 @@ public class QuickSorter implements Sorter {
         return firstIndex + 1;
     }
 
+    public String getName(){
+        return "Quick Sorter";
+    }
+
 
 }

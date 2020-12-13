@@ -4,6 +4,9 @@ public class BubbleSorter implements Sorter {
 
     @Override
     public int[] sortArray(int[] arrayToSort) {
+        if(arrayToSort == null){
+            return arrayToSort;
+        }
         boolean swapped = true;
         int arrayLength = arrayToSort.length;
         for (int i = 0; i < arrayLength - 1; i++) {
@@ -19,6 +22,10 @@ public class BubbleSorter implements Sorter {
             }
         }
         return arrayToSort;
+    }
+
+    public String getName(){
+        return "Bubble Sorter";
     }
 
 }

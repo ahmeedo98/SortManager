@@ -56,7 +56,6 @@ public class BinaryTree implements BinaryTreeInterface, Sorter {
     }
 
     public ArrayList<Integer> inOrder(Node node) {
-
         if (node == null) {
             return null;
         }
@@ -67,15 +66,19 @@ public class BinaryTree implements BinaryTreeInterface, Sorter {
         return sortedTree;
     }
 
-    public int[] descOrder(Node node) {
-        int[] sortedTreeDesc = new int[getNumberOfElements()];
+    public ArrayList<Integer> descOrder(Node node) {
         if (node == null) {
-            return sortedTreeDesc;
+            return null;
         }
 
         descOrder(node.getRightChild());
+        sortedTree.add(node.getValue());
         descOrder(node.getLeftChild());
-        return sortedTreeDesc;
+        return sortedTree;
+    }
+
+    public String getName(){
+        return "Binary Tree Sorter";
     }
 
     @Override
@@ -123,7 +126,7 @@ public class BinaryTree implements BinaryTreeInterface, Sorter {
 
     @Override
     public int[] getSortedTreeAsc() {
-        ArrayList<Integer> sortedTreeList = new ArrayList<Integer>();
+        ArrayList<Integer> sortedTreeList;
         sortedTreeList = inOrder(rootNode);
         int[] sortedTree = new int[sortedTreeList.size()];
         for (int i = 0; i <sortedTreeList.size() ; i++) {
@@ -135,8 +138,12 @@ public class BinaryTree implements BinaryTreeInterface, Sorter {
 
     @Override
     public int[] getSortedTreeDesc() {
-        int[] sortedTreeDesc = new int[getNumberOfElements()];
-        descOrder(rootNode);
+        ArrayList<Integer> sortedTreeList;
+        sortedTreeList = descOrder(rootNode);
+        int[] sortedTreeDesc = new int[sortedTreeList.size()];
+        for (int i = 0; i <sortedTreeList.size() ; i++) {
+            sortedTreeDesc[i] = sortedTreeList.get(i);
+        }
         return sortedTreeDesc;
     }
 
@@ -144,7 +151,6 @@ public class BinaryTree implements BinaryTreeInterface, Sorter {
     @Override
     public int[] sortArray(int[] arrayToSort) {
         addElements(arrayToSort);
-
         return getSortedTreeAsc();
     }
 }

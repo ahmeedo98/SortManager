@@ -18,4 +18,9 @@ public class InsertionSorter implements Sorter{
         }
         return arrayToSort;
     }
+
+    public String getName(){
+        return "Insertion Sorter";
+    }
+
 }

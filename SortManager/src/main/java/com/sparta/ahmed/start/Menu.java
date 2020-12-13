@@ -73,4 +73,15 @@ public class Menu {
     public void printPerformanceTest(long timeTaken) {
         System.out.println("Time taken to sort the algorithm was :: " + timeTaken);
     }
+
+    public void printPerformanceTests(long timeTaken, int i) {
+        System.out.println(printSortingAlgorithmName(i) + "Time taken to sort the algorithm was :: " + timeTaken);
+    }
+
+    public int restartProgram(){
+        System.out.println("Would you like to run the program again?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+        return userInput.nextInt();
+    }
 }
